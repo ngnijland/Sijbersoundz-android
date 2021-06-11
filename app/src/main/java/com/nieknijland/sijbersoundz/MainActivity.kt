@@ -8,18 +8,15 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.nieknijland.sijbersoundz.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
     private var adapter: SoundAdapter? = null
     private var soundsList = ArrayList<Sound>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
         soundsList.add(Sound("Groningen"))
         soundsList.add(Sound("Nah broer"))
@@ -40,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = SoundAdapter(this, soundsList)
 
-        binding.gvSounds.adapter = adapter
+        gvSounds.adapter = adapter
     }
 
     class SoundAdapter(private val context: Context, var soundsList: ArrayList<Sound>) : BaseAdapter() {
